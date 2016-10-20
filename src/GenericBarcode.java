@@ -24,6 +24,27 @@ public class GenericBarcode {
         barcode.fillRect(marginLength,marginLength,borderWidth,contentLength+2*borderWidth);
         barcode.fillRect(marginLength+borderWidth+contentLength,marginLength,borderWidth,contentLength+2*borderWidth);
     }
+    public void setColor(Color color){
+        barcode.setColor(color);
+    }
+    public void drawContentBlock(int x,int y){
+        barcode.fillRect(marginLength+borderWidth+x,marginLength+borderWidth+y);
+    }
+    public void drawContentBlock(int x,int y, Color color){
+        barcode.setColor(color);
+        barcode.fillRect(marginLength+borderWidth+x,marginLength+borderWidth+y);
+    }
+    public void drawContent(int content[][]){
+        for(int y=0;y<contentLength;y++){
+            for(int x=0;x<contentLength;x++){
+                Color color=data2Color(content[y][x]);
+                drawContentBlock(x,y,color);
+            }
+        }
+    }
+    public Color data2Color(int data){
+        return null;
+    }
     public void save(String filePath) throws IOException{
         barcode.save(filePath);
     }
