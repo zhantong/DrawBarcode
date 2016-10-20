@@ -58,7 +58,18 @@ public class DrawBarcode {
         g.setBackground(Color.WHITE);
         g.clearRect(0, 0, widthInPixels, heightInPixels);
     }
-
+    public void setColor(Color color){
+        g.setColor(color);
+    }
+    public void fillRect(int x,int y){
+        g.fillRect(x*pixelsPerBlockLine,y*pixelsPerBlockLine,pixelsPerBlockLine,pixelsPerBlockLine);
+    }
+    public void fillRect(int x,int y,int width,int height){
+        g.fillRect(x*pixelsPerBlockLine,y*pixelsPerBlockLine,width*pixelsPerBlockLine,height*pixelsPerBlockLine);
+    }
+    public void fillRect(int x,int y,float offsetX,float offsetY,float width,float height){
+        g.fillRect(Math.round(x+offsetX)*pixelsPerBlockLine,Math.round(y+offsetY)*pixelsPerBlockLine,Math.round(width*pixelsPerBlockLine),Math.round(height*pixelsPerBlockLine));
+    }
     public void save(String filePath) throws IOException {
         File file = new File(filePath);
         if (drawType == DRAW_NORMAL) {
